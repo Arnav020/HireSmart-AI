@@ -1,0 +1,15 @@
+# Ignore virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Other common ML ignores
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.pkl
+*.pt
+*.h5
+*.csv
+.DS_Store
