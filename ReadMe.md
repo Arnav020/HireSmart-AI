@@ -31,7 +31,7 @@ HireSmart AI is a multi-agent system designed to automate the job screening proc
 
 ## 🛠️ Technologies Used
 
-- **Python 3.10+**
+- **Python 3.1+**
 - **Ollama + Mistral** (LLM for summarization)
 - **SentenceTransformers** (`all-MiniLM-L6-v2`)
 - **Torch** (backend for embeddings)
