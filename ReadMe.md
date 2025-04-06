@@ -1,47 +1,73 @@
 # 💼 HireSmart AI
 
-**Automating Job Screening with Multi-Agent Intelligence**
+**Intelligent Automation for Job Candidate Screening**
 
-HireSmart AI is a smart recruitment assistant that automates the candidate screening process using a collaborative multi-agent architecture. It reads job descriptions, extracts key data from CVs, matches and shortlists top candidates, and even schedules interviews — all with minimal human intervention.
+HireSmart AI is a multi-agent system designed to automate the job screening process. It reads job descriptions, extracts and evaluates candidate CVs, calculates semantic similarity, shortlists the best-fit candidates, and schedules interviews — all with minimal manual intervention.
 
 ---
 
 ## 🚀 Features
 
-- 📄 **JD Summarizer Agent**: Cleans and summarizes job descriptions.
-- 🧠 **CV Extractor Agent**: Extracts relevant data from resumes.
-- ⚖️ **Matcher Agent**: Calculates match scores between JDs and CVs.
-- 🎯 **Shortlister Agent**: Selects top candidates based on scores.
-- 🗓️ **Scheduler Agent**: Sends interview invites and generates Google Meet links.
+- 📄 **JD Summarization**: Cleans and condenses job descriptions using LLM.
+- 📑 **CV Extraction**: Extracts text from PDFs using PyMuPDF.
+- ⚖️ **Matching Engine**: Computes semantic similarity between CVs and JDs.
+- 🎯 **Shortlisting Agent**: Filters top candidates based on match score and metadata.
+- 🗓️ **Scheduler Agent**: Sends automated interview invites with Google Meet links.
+- 🗃️ **SQLite Integration**: Stores shortlisted candidate data for record-keeping.
 
 ---
 
-## 🗂️ Folder Structure
+## 🧠 Agents in Action
+
+| Agent Name        | Description                                                             |
+|-------------------|-------------------------------------------------------------------------|
+| JD Summarizer     | Uses LLM to extract key points from job descriptions.                   |
+| CV Extractor      | Parses resumes (PDFs) into clean text for processing.                   |
+| Matcher           | Uses sentence transformers to compute similarity scores.                |
+| Shortlister       | Filters candidates by score & extracts name, email, phone.              |
+| Scheduler         | Sends personalized emails and schedules interviews via Google Calendar. |
+
+---
+
+## 🛠️ Technologies Used
+
+- **Python 3.10+**
+- **Ollama + Mistral** (LLM for summarization)
+- **SentenceTransformers** (`all-MiniLM-L6-v2`)
+- **Torch** (backend for embeddings)
+- **PyMuPDF (fitz)** for CV parsing
+- **SQLite3** for candidate tracking
+- **Google Calendar API + Gmail SMTP** for scheduling
+- **dotenv** for credential management
+
+---
+
+## 📂 Project Structure
 
 ```bash
 HireSmartAI/
 │
-├── Agents/
+├── agents/
 │   ├── jd_summarizer.py
 │   ├── cv_extractor.py
 │   ├── matcher.py
 │   ├── shortlister.py
 │   └── scheduler.py
 │
-├── Data/
-│   ├── CVs/                  # Candidate resumes
-│   └── job_descriptions/     # Raw JDs and summaries
+├── data/
+│   ├── cvs/                  # Candidate resumes (PDFs)
+│   └── job_descriptions/     # Raw and summarized JDs
 │
-├── Database/
-│   ├── hire_smart.db         # SQLite database
-│   └── db_handler.py         # Handles data persistence
+├── database/
+│   ├── hire_smart.db
+│   └── db_handler.py
 │
-├── Emails/
-│   └── email_sender.py       # Sends interview invites
+├── emails/
+│   └── email_sender.py
 │
-├── Utils/
-│   └── text_utils.py         # Common text processing utilities
+├── utils/
+│   └── text_utils.py
 │
-├── main.py                   # Pipeline execution file
-├── requirements.txt          # Python dependencies
+├── main.py                   # Runs full pipeline
+├── requirements.txt
 └── README.md
